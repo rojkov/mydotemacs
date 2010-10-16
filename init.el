@@ -107,8 +107,7 @@ vi style of % jumping to matching brace."
     (requires . 0)))
 
 (defun ac-nropemacs-setup ()
-  (setq ac-sources (append '(ac-source-nropemacs
-                             ac-source-nropemacs-dot) ac-sources)))
+  (setq ac-sources '(ac-source-nropemacs ac-source-nropemacs-dot)))
 
 ;; extended ropemacs
 

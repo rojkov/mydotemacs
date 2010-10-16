@@ -87,7 +87,65 @@ vi style of % jumping to matching brace."
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/autocomplete/ac-dict")
 (ac-config-default)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ropemacs
+
+(defun ac-ropemacs-candidates ()
+  (mapcar (lambda (completion)
+      (concat ac-prefix completion))
+    (rope-completions)))
+
+(ac-define-source nropemacs
+  '((candidates . ac-ropemacs-candidates)
+    (symbol . "p")))
+
+(ac-define-source nropemacs-dot
+  '((candidates . ac-ropemacs-candidates)
+    (symbol . "p")
+    (prefix . c-dot)
+    (requires . 0)))
+
+(defun ac-nropemacs-setup ()
+  (setq ac-sources (append '(ac-source-nropemacs
+                             ac-source-nropemacs-dot) ac-sources)))
+
+;; extended ropemacs
+
+(defun ac-eropemacs-candidates ()
+  (mapcar (lambda (proposal)
+          (destructuring-bind (name doc type) proposal
+            (list (concat ac-prefix name) doc
+                  (if type (substring type 0 1) nil))))
+        (rope-extended-completions)))
+
+(defun ac-eropemacs-document (item) (car item))
+(defun ac-eropemacs-symbol (item) (cadr item))
+
+(ac-define-source extended-ropemacs
+  '((candidates . ac-eropemacs-candidates)
+    (document . ac-eropemacs-document)
+    (symbol . ac-eropemacs-symbol)))
+
+(ac-define-source extended-ropemacs-dot
+  '((candidates . ac-eropemacs-candidates)
+    (document . ac-eropemacs-document)
+    (symbol . ac-eropemacs-symbol)
+    (prefix . c-dot)
+    (requires . 0)))
+
+(defun ac-eropemacs-setup ()
+  (setq ac-sources (append '(ac-source-extended-ropemacs
+                             ac-source-extended-ropemacs-dot) ac-sources)))
+
+(defun ac-ropemacs-setup ()
+  (if (functionp 'rope-extended-completions1)
+      (add-hook 'python-mode-hook 'ac-eropemacs-setup)
+    (add-hook 'python-mode-hook 'ac-nropemacs-setup)))
+
 (ac-ropemacs-setup)
+;; end of ropemacs setup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.

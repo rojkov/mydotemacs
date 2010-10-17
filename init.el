@@ -119,26 +119,28 @@ vi style of % jumping to matching brace."
         (rope-extended-completions)))
 
 (defun ac-eropemacs-document (item) (car item))
+
+;; This function is not used as ac-define-source's symbol cons accepts
+;; sequence (like "p"), not function.
 (defun ac-eropemacs-symbol (item) (cadr item))
 
 (ac-define-source extended-ropemacs
   '((candidates . ac-eropemacs-candidates)
     (document . ac-eropemacs-document)
-    (symbol . ac-eropemacs-symbol)))
+    (symbol . "p")))
 
 (ac-define-source extended-ropemacs-dot
   '((candidates . ac-eropemacs-candidates)
     (document . ac-eropemacs-document)
-    (symbol . ac-eropemacs-symbol)
+    (symbol . "p")
     (prefix . c-dot)
     (requires . 0)))
 
 (defun ac-eropemacs-setup ()
-  (setq ac-sources (append '(ac-source-extended-ropemacs
-                             ac-source-extended-ropemacs-dot) ac-sources)))
+  (setq ac-sources '(ac-source-extended-ropemacs ac-source-extended-ropemacs-dot)))
 
 (defun ac-ropemacs-setup ()
-  (if (functionp 'rope-extended-completions1)
+  (if (functionp 'rope-extended-completions)
       (add-hook 'python-mode-hook 'ac-eropemacs-setup)
     (add-hook 'python-mode-hook 'ac-nropemacs-setup)))
 

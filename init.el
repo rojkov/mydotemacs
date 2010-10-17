@@ -148,6 +148,11 @@ vi style of % jumping to matching brace."
 ;; end of ropemacs setup
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; linum-mode
+(require 'linum-off "~/.emacs.d/vendors/linum-off.el")
+(global-linum-mode 1)
+(linum-on)
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.

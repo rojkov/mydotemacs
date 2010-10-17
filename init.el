@@ -55,6 +55,7 @@ vi style of % jumping to matching brace."
 (require 'whitespace)
 
 (add-hook 'python-mode-hook (lambda () (setq show-trailing-whitespace t)))
+(global-set-key (kbd "C-c w") 'delete-trailing-whitespace)
 
 ;; Show extra whitespace
 (defface extra-whitespace-face

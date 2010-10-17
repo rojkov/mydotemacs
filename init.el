@@ -66,6 +66,8 @@ vi style of % jumping to matching brace."
 	  (lambda () (font-lock-add-keywords nil my-extra-keywords)))
 (add-hook 'text-mode-hook
 	  (lambda () (font-lock-add-keywords nil my-extra-keywords)))
+(add-hook 'python-mode-hook
+	  (lambda () (font-lock-add-keywords nil my-extra-keywords)))
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 

@@ -148,6 +148,9 @@ vi style of % jumping to matching brace."
 ;; end of ropemacs setup
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-m" 'newline-and-indent)))
+(add-hook 'python-mode-hook 'turn-on-eldoc-mode)
+
 ;; linum-mode
 (require 'linum-off "~/.emacs.d/vendors/linum-off.el")
 (global-linum-mode 1)

@@ -5,7 +5,7 @@
 (set-default-font "Monospace-10")
 
 (require 'color-theme)
-(color-theme-initialize)
+;;(color-theme-initialize)
 (setq my-color-themes (list 'color-theme-deep-blue
 			    'color-theme-arjen))
 (defun my-theme-set-default ()

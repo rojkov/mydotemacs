@@ -158,6 +158,15 @@ vi style of % jumping to matching brace."
 (require 'linum-off "~/.emacs.d/vendors/linum-off.el")
 (global-linum-mode 1)
 (linum-on)
+(column-number-mode 1)
+
+;; smooth scrolling
+(setq scroll-step           1
+      scroll-conservatively 10000)
+
+(require 'ido)
+(setq ido-save-directory-list-file "~/.emacs.d/ido.last")
+(ido-mode t)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.

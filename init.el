@@ -164,6 +164,9 @@ vi style of % jumping to matching brace."
 (setq scroll-step           1
       scroll-conservatively 10000)
 
+;; show file names in title
+(setq frame-title-format "%b: %f")
+
 (require 'ido)
 (setq ido-save-directory-list-file "~/.emacs.d/ido.last")
 (ido-mode t)

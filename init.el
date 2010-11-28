@@ -160,6 +160,10 @@ vi style of % jumping to matching brace."
 (linum-on)
 (column-number-mode 1)
 
+;; visible-mark-mode
+(require 'visible-mark "~/.emacs.d/vendors/visible-mark.el")
+(global-visible-mark-mode 1)
+
 ;; smooth scrolling
 (setq scroll-step           1
       scroll-conservatively 10000)

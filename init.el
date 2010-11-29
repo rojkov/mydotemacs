@@ -40,7 +40,12 @@
 (cua-mode t)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
-(setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
+(setq cua-keep-region-after-copy nil) ;; Standard Windows behaviour
+
+;; Redo
+(require 'redo "~/.emacs.d/vendors/redo.el")
+(global-set-key (kbd "C-/") 'undo)
+(global-set-key (kbd "C-x C-/") 'redo)
 
 ;; Go to matched paranthesis
 (defun goto-match-paren (arg)

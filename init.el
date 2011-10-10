@@ -7,7 +7,7 @@
 (require 'color-theme)
 (color-theme-initialize)
 (setq my-color-themes (list 'color-theme-deep-blue
-			    'color-theme-arjen))
+                            'color-theme-arjen))
 (defun my-theme-set-default ()
   "Set the first row."
   (interactive)
@@ -53,8 +53,8 @@
 vi style of % jumping to matching brace."
   (interactive "p")
   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
-	((looking-at "\\s\)") (forward-char 1) (backward-list 1))
-	(t (self-insert-command (or arg 1)))))
+        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+        (t (self-insert-command (or arg 1)))))
 (global-set-key (kbd "C-5") 'goto-match-paren)
 
 (require 'whitespace)
@@ -69,11 +69,11 @@ vi style of % jumping to matching brace."
 (defvar my-extra-keywords
   '(("\t" . 'extra-whitespace-face)))
 (add-hook 'emacs-lisp-mode-hook
-	  (lambda () (font-lock-add-keywords nil my-extra-keywords)))
+          (lambda () (font-lock-add-keywords nil my-extra-keywords)))
 (add-hook 'text-mode-hook
-	  (lambda () (font-lock-add-keywords nil my-extra-keywords)))
+          (lambda () (font-lock-add-keywords nil my-extra-keywords)))
 (add-hook 'python-mode-hook
-	  (lambda () (font-lock-add-keywords nil my-extra-keywords)))
+          (lambda () (font-lock-add-keywords nil my-extra-keywords)))
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 

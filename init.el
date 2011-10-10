@@ -196,4 +196,11 @@ vi style of % jumping to matching brace."
 
 (provide '.emacs)
 
+;; Erlang mode
+(setq load-path (cons "/usr/lib/erlang/lib/tools-2.6.5/emacs" load-path))
+(setq erlang-root-dir "/usr/lib/erlang")
+(setq exec-path (cons "/usr/lib/erlang/lib/tools-2.6.5/emacs" exec-path))
+;;(require 'erlang-start "/usr/lib/erlang/lib/tools-2.6.5/emacs/erlang-start.el")
+(require 'erlang-start)
+
 ;;; .emacs ends here

@@ -2,7 +2,7 @@
 ;;; Code:
 (setq inhibit-startup-screen t)
 
-(set-default-font "Monospace-10")
+(set-default-font "Monospace-9")
 
 (require 'color-theme)
 (color-theme-initialize)
@@ -202,5 +202,15 @@ vi style of % jumping to matching brace."
 (setq exec-path (cons "/usr/lib/erlang/lib/tools-2.6.5/emacs" exec-path))
 ;;(require 'erlang-start "/usr/lib/erlang/lib/tools-2.6.5/emacs/erlang-start.el")
 (require 'erlang-start)
+
+;; Indentation
+(setq-default c-basic-offset 4
+              tab-width 4
+              indent-tabs-mode nil
+              c-default-style "linux")
+
+;; TODO: 
+;; 1. highlight all search results like in vim
+;; 2. vim-like line join (J in command mode)
 
 ;;; .emacs ends here

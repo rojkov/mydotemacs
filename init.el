@@ -209,6 +209,9 @@ vi style of % jumping to matching brace."
               indent-tabs-mode nil
               c-default-style "linux")
 
+;; disable toolbar
+(tool-bar-mode -1)
+
 ;; TODO: 
 ;; 1. highlight all search results like in vim
 ;; 2. vim-like line join (J in command mode)

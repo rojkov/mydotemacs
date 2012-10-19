@@ -34,7 +34,12 @@
      (global-set-key [f12] 'my-theme-cycle)))
 
 ;; Switch on easy window navigation
-(windmove-default-keybindings)
+;in text terminal Shift-<Up> doesn't work -> don't use default bindings
+;(windmove-default-keybindings)
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
 
 ;; CUA mode
 (cua-mode t)

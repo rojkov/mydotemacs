@@ -217,6 +217,12 @@ vi style of % jumping to matching brace."
 ;; disable toolbar
 (tool-bar-mode -1)
 
+;; Qt/QML
+(require 'qml-mode "~/.emacs.d/vendors/qml-mode.el")
+(add-to-list 'auto-mode-alist '("\\.qml\\'" . qml-mode))
+(require 'qt-pro "~/.emacs.d/vendors/qt-pro.el")
+(add-to-list 'auto-mode-alist '("\\.pro\\'" . qt-pro-mode))
+
 ;; TODO: 
 ;; 1. highlight all search results like in vim
 ;; 2. vim-like line join (J in command mode)

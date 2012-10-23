@@ -35,11 +35,17 @@
 
 ;; Switch on easy window navigation
 ;in text terminal Shift-<Up> doesn't work -> don't use default bindings
-;(windmove-default-keybindings)
-(global-set-key (kbd "C-c <left>")  'windmove-left)
-(global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <up>")    'windmove-up)
-(global-set-key (kbd "C-c <down>")  'windmove-down)
+;;(windmove-default-keybindings)
+;(global-set-key (kbd "C-c <left>")  'windmove-left)
+;(global-set-key (kbd "C-c <right>") 'windmove-right)
+;(global-set-key (kbd "C-c <up>")    'windmove-up)
+;(global-set-key (kbd "C-c <down>")  'windmove-down)
+(define-prefix-command 'windows-map) ;; create key map for windows related commands
+(global-set-key (kbd "C-w") 'windows-map) ;; create new prefix key C-w
+(global-set-key (kbd "C-w h")  'windmove-left)
+(global-set-key (kbd "C-w l") 'windmove-right)
+(global-set-key (kbd "C-w k")    'windmove-up)
+(global-set-key (kbd "C-w j")  'windmove-down)
 
 ;; CUA mode
 (cua-mode t)

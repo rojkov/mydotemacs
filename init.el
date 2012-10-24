@@ -224,8 +224,8 @@ vi style of % jumping to matching brace."
 (tool-bar-mode -1)
 
 ;; scroll buffer
-(global-set-key (kbd "M-<up>")  (lambda () (interactive) (scroll-up   1)))
-(global-set-key (kbd "M-<down>")  (lambda () (interactive) (scroll-down 1)))
+(global-set-key (kbd "M-<down>")  (lambda () (interactive) (scroll-up   1)))
+(global-set-key (kbd "M-<up>")  (lambda () (interactive) (scroll-down 1)))
 
 ;; Qt/QML
 (require 'qml-mode "~/.emacs.d/vendors/qml-mode.el")

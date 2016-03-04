@@ -35,7 +35,6 @@
   ;; reset trailing-whitespace face
   (set-face-background 'trailing-whitespace "red")
   (message "%S" (car theme-current)))
-(setq-default show-trailing-whitespace t)
 (eval-after-load "color-theme"
   '(progn
      (setq color-theme-is-global nil) ; Initialization
@@ -109,11 +108,20 @@ vi style of % jumping to matching brace."
 (defvar my-extra-keywords
   '(("\t" . 'extra-whitespace-face)))
 (add-hook 'emacs-lisp-mode-hook
-          (lambda () (font-lock-add-keywords nil my-extra-keywords)))
+          (lambda ()
+            (font-lock-add-keywords nil my-extra-keywords)
+            (setq indent-tabs-mode nil)
+            (setq show-trailing-whitespace t)))
 (add-hook 'text-mode-hook
-          (lambda () (font-lock-add-keywords nil my-extra-keywords)))
+          (lambda ()
+            (font-lock-add-keywords nil my-extra-keywords)
+            (setq indent-tabs-mode nil)
+            (setq show-trailing-whitespace t)))
 (add-hook 'python-mode-hook
-          (lambda () (font-lock-add-keywords nil my-extra-keywords)))
+          (lambda ()
+            (font-lock-add-keywords nil my-extra-keywords)
+            (setq indent-tabs-mode nil)
+            (setq show-trailing-whitespace t)))
 
 (require 'highlight-symbol)
 ;;(setq highlight-symbol-on-navigation-p t)

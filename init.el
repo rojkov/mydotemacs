@@ -133,5 +133,11 @@ vi style of % jumping to matching brace."
 (require 'auto-complete-config)
 (ac-config-default)
 
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
+;; switch off linum for selected modes
+(setq linum-disabled-modes-list '(eshell-mode compilation-mode))
+(require 'linum-off)
+
 ;; TODO
 ;; 1. diff-hl

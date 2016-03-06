@@ -49,10 +49,16 @@
 (setq ido-save-directory-list-file "~/.emacs.d/ido.last")
 (ido-mode t)
 
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
 ;; linum-mode
 (global-linum-mode 1)
 (linum-on)
 (column-number-mode 1)
+
+;; switch off linum for selected modes
+(setq linum-disabled-modes-list '(eshell-mode compilation-mode))
+(require 'linum-off)
 
 ;; show file names in title
 (setq frame-title-format "%b: %f")
@@ -133,11 +139,7 @@ vi style of % jumping to matching brace."
 (require 'auto-complete-config)
 (ac-config-default)
 
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-
-;; switch off linum for selected modes
-(setq linum-disabled-modes-list '(eshell-mode compilation-mode))
-(require 'linum-off)
+(scroll-bar-mode -1)
 
 ;; TODO
 ;; 1. diff-hl

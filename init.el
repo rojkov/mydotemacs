@@ -139,6 +139,8 @@ vi style of % jumping to matching brace."
 (require 'auto-complete-config)
 (ac-config-default)
 
+(global-set-key (kbd "C-x g") 'magit-status)
+
 (scroll-bar-mode -1)
 
 ;; TODO

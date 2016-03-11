@@ -60,8 +60,9 @@
 (setq linum-disabled-modes-list '(eshell-mode compilation-mode))
 (require 'linum-off)
 
-;; show file names in title
-(setq frame-title-format "%b: %f")
+;; show file names in title (some distros like Fedora override the format - defer to post-init)
+(add-hook 'after-init-hook (lambda ()
+                             (setq frame-title-format "%b: %f")))
 
 ;; smooth scrolling
 (setq scroll-step           1

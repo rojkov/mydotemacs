@@ -153,5 +153,11 @@ vi style of % jumping to matching brace."
 (setq auto-mode-alist (cons '("\\.bbclass$" . bb-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.conf$" . bb-mode) auto-mode-alist))
 
+;; multi-term
+(setq multi-term-program "/bin/bash")
+(require 'multi-term)
+(add-to-list 'term-unbind-key-list "C-w")
+(global-set-key (kbd "C-t") 'multi-term-next)
+
 ;; TODO
 ;; 1. diff-hl

@@ -159,5 +159,9 @@ vi style of % jumping to matching brace."
 (add-to-list 'term-unbind-key-list "C-w")
 (global-set-key (kbd "C-t") 'multi-term-next)
 
+;; Show date time
+(display-time-mode 1)
+(setq display-time-format "[ww%U %a %h %e %H:%M]")
+
 ;; TODO
 ;; 1. diff-hl

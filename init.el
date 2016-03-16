@@ -161,7 +161,7 @@ vi style of % jumping to matching brace."
 
 ;; Show date time
 (display-time-mode 1)
-(setq display-time-format "[ww%U %a %h %e %H:%M]")
+(setq display-time-format "[%a %h %e %H:%M]")
 
 ;; TODO
 ;; 1. diff-hl

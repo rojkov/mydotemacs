@@ -157,6 +157,9 @@ vi style of % jumping to matching brace."
 (setq multi-term-program "/bin/bash")
 (require 'multi-term)
 (add-to-list 'term-unbind-key-list "C-w")
+;; unbind Ctl-r to let shell do reverse search in its history
+(setq term-bind-key-alist (delq (assoc "C-r" term-bind-key-alist) term-bind-key-alist))
+
 (global-set-key (kbd "C-t") 'multi-term-next)
 
 ;; Show date time

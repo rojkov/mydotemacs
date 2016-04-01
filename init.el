@@ -166,5 +166,9 @@ vi style of % jumping to matching brace."
 (display-time-mode 1)
 (setq display-time-format "[%a %h %e %H:%M]")
 
+;; CScope integration
+(require 'xcscope)
+(define-key global-map [(ctrl f6)] 'cscope-set-initial-directory)
+
 ;; TODO
 ;; 1. diff-hl

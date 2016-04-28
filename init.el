@@ -129,6 +129,9 @@ vi style of % jumping to matching brace."
             (font-lock-add-keywords nil my-extra-keywords)
             (setq indent-tabs-mode nil)
             (setq show-trailing-whitespace t)))
+(add-hook 'c-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace t)))
 
 (require 'highlight-symbol)
 ;;(setq highlight-symbol-on-navigation-p t)

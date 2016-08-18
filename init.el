@@ -103,6 +103,10 @@ vi style of % jumping to matching brace."
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy nil)
+;; Don't reset region highlighting after indent-rigidly
+(defadvice indent-rigidly (after deactivate-mark-nil activate)
+  (if (called-interactively-p)
+      (setq deactivate-mark nil)))
 
 ;; undo-tree -> C-x u
 (require 'undo-tree)

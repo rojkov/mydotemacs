@@ -105,7 +105,7 @@ vi style of % jumping to matching brace."
 (setq cua-keep-region-after-copy nil)
 ;; Don't reset region highlighting after indent-rigidly
 (defadvice indent-rigidly (after deactivate-mark-nil activate)
-  (if (called-interactively-p)
+  (if (called-interactively-p 'any)
       (setq deactivate-mark nil)))
 
 ;; undo-tree -> C-x u

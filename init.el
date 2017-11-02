@@ -1,3 +1,9 @@
+;;; init --- My init file
+
+;;; Commentary:
+
+;;; Code:
+
 (setq inhibit-startup-screen t)
 
 (set-default-font "Monospace-10")
@@ -179,9 +185,6 @@ vi style of % jumping to matching brace."
 
 ;; Enable Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
-
-;; Enable Go mode
-(require 'go-mode-autoloads)
 
 ;; TODO
 ;; 1. diff-hl

@@ -177,5 +177,11 @@ vi style of % jumping to matching brace."
 (require 'xcscope)
 (define-key global-map [(ctrl f6)] 'cscope-set-initial-directory)
 
+;; Enable Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; Enable Go mode
+(require 'go-mode-autoloads)
+
 ;; TODO
 ;; 1. diff-hl

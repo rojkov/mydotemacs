@@ -186,5 +186,7 @@ vi style of % jumping to matching brace."
 ;; Enable Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+(add-hook 'before-save-hook #'gofmt-before-save)
+
 ;; TODO
 ;; 1. diff-hl

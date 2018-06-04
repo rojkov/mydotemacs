@@ -188,5 +188,8 @@ vi style of % jumping to matching brace."
 
 (add-hook 'before-save-hook #'gofmt-before-save)
 
+(add-hook 'yaml-mode-hook 'highlight-indentation-mode)
+(add-hook 'python-mode-hook 'highlight-indentation-mode)
+
 ;; TODO
 ;; 1. diff-hl

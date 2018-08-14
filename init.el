@@ -4,6 +4,15 @@
 
 ;;; Code:
 
+(setenv "PATH"
+  (concat
+    (concat (getenv "HOME") "/go/bin") ":"
+    (getenv "PATH")
+  )
+)
+
+(setq exec-path (append exec-path (list (concat (getenv "HOME") "/go/bin"))))
+
 (setq inhibit-startup-screen t)
 
 (set-default-font "Monospace-10")
@@ -186,7 +195,25 @@ vi style of % jumping to matching brace."
 ;; Enable Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(add-hook 'before-save-hook #'gofmt-before-save)
+;; Go Guru
+(require 'go-guru)
+
+(defun my-go-mode-hook ()
+  "This is called when we are in go mode."
+  (add-hook 'before-save-hook #'gofmt-before-save)
+  (setq gofmt-command "goimports")                ; gofmt uses invokes goimports
+  (if (not (string-match "go" compile-command))   ; set compile command default
+      (set (make-local-variable 'compile-command)
+           "go build -v && go test -v && go vet"))
+  (local-set-key (kbd "M-p") 'compile)            ; Invoke compiler
+  (local-set-key (kbd "M-P") 'recompile)          ; Redo most recent compile cmd
+  (local-set-key (kbd "M-]") 'next-error)         ; Go to next error (or msg)
+  (local-set-key (kbd "M-[") 'previous-error)     ; Go to previous error or msg
+  (require 'go-autocomplete)
+  (go-guru-hl-identifier-mode)
+)
+
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'highlight-indentation-mode)

@@ -210,6 +210,7 @@ vi style of % jumping to matching brace."
   (local-set-key (kbd "M-]") 'next-error)         ; Go to next error (or msg)
   (local-set-key (kbd "M-[") 'previous-error)     ; Go to previous error or msg
   (require 'go-autocomplete)
+  (auto-complete-mode 1)
   (go-guru-hl-identifier-mode)
 )
 

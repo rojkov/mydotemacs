@@ -90,7 +90,7 @@
 
 ;; Go to matched paranthesis
 (defun goto-match-paren (arg)
-  "Go to the matching parenthesis if on parenthesis, otherwise insert %.
+  "Go to the matching parenthesis for ARG if on parenthesis, otherwise insert %.
 vi style of % jumping to matching brace."
   (interactive "p")
   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))

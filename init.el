@@ -159,60 +159,8 @@ vi style of % jumping to matching brace."
 (global-set-key [(control f3)] 'highlight-symbol-at-point)
 
 ;; autocomplete
+(require 'go-autocomplete)
 (require 'auto-complete-config)
-(setq ac-modes '(emacs-lisp-mode
-                 lisp-mode
-                 lisp-interaction-mode
-                 slime-repl-mode
-                 nim-mode
-                 c-mode
-                 cc-mode
-                 c++-mode
-                 objc-mode
-                 swift-mode
-                 java-mode
-                 malabar-mode
-                 clojure-mode
-                 clojurescript-mode
-                 scala-mode
-                 scheme-mode
-                 ocaml-mode
-                 tuareg-mode
-                 coq-mode
-                 haskell-mode
-                 agda-mode
-                 agda2-mode
-                 perl-mode
-                 cperl-mode
-                 python-mode
-                 ruby-mode
-                 lua-mode
-                 tcl-mode
-                 ecmascript-mode
-                 javascript-mode
-                 js-mode
-                 js-jsx-mode
-                 js2-mode
-                 js2-jsx-mode
-                 coffee-mode
-                 php-mode
-                 css-mode
-                 scss-mode
-                 less-css-mode
-                 elixir-mode
-                 makefile-mode
-                 sh-mode
-                 fortran-mode
-                 f90-mode
-                 ada-mode
-                 xml-mode
-                 sgml-mode
-                 web-mode
-                 ts-mode
-                 sclang-mode
-                 verilog-mode
-                 qml-mode
-                 apples-mode))
 (ac-config-default)
 
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -262,8 +210,6 @@ vi style of % jumping to matching brace."
   (local-set-key (kbd "M-P") 'recompile)          ; Redo most recent compile cmd
   (local-set-key (kbd "M-]") 'next-error)         ; Go to next error (or msg)
   (local-set-key (kbd "M-[") 'previous-error)     ; Go to previous error or msg
-  (require 'go-autocomplete)
-  (auto-complete-mode 1)
   (go-guru-hl-identifier-mode)
 )
 

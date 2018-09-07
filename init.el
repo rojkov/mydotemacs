@@ -218,5 +218,8 @@ vi style of % jumping to matching brace."
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 
+;; Emacs which-key mode on
+(which-key-mode)
+
 ;; TODO
 ;; 1. diff-hl

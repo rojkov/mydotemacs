@@ -221,5 +221,13 @@ vi style of % jumping to matching brace."
 ;; Emacs which-key mode on
 (which-key-mode)
 
+(setq ispell-list-command "--list")
+(dolist (hook '(text-mode-hook))
+      (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(markdown-mode-hook))
+      (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+      (add-hook hook (lambda () (flyspell-mode -1))))
+
 ;; TODO
 ;; 1. diff-hl

@@ -26,16 +26,17 @@
 (package-initialize)
 
 ;; Set up color themes
-(require 'color-theme)
-(color-theme-initialize)
-(setq my-color-themes (list 'color-theme-hober
-                            'color-theme-classic
-                            'color-theme-deep-blue))
+;; make the fringe stand out from the background
+(setq solarized-distinct-fringe-background t)
+;; make the modeline high contrast
+(setq solarized-high-contrast-mode-line t)
+(setq my-color-themes (list 'solarized-dark
+                            'solarized-light))
 (defun my-theme-set-default ()
   "Set the first row."
   (interactive)
   (setq theme-current my-color-themes)
-  (funcall (car theme-current))
+  (load-theme (car theme-current) t)
 
   ;; reset trailing-whitespace face
   (set-face-background 'trailing-whitespace "red")
@@ -46,15 +47,13 @@
   (setq theme-current (cdr theme-current))
   (if (null theme-current)
       (setq theme-current my-color-themes))
-  (funcall (car theme-current))
+  (load-theme (car theme-current) t)
   ;; reset trailing-whitespace face
   (set-face-background 'trailing-whitespace "red")
   (message "%S" (car theme-current)))
-(eval-after-load "color-theme"
-  '(progn
-     (setq color-theme-is-global nil) ; Initialization
-     (my-theme-set-default)
-     (global-set-key [f12] 'my-theme-cycle)))
+
+(my-theme-set-default)
+(global-set-key [f12] 'my-theme-cycle)
 
 ;; disable toolbar and menubar
 (tool-bar-mode -1)

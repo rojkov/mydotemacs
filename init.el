@@ -216,6 +216,7 @@ vi style of % jumping to matching brace."
 
 (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
+(add-hook 'bazel-mode-hook (lambda () (add-hook 'before-save-hook #'bazel-format nil t)))
 
 ;; Emacs which-key mode on
 (which-key-mode)

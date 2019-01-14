@@ -15,7 +15,7 @@
 
 (setq inhibit-startup-screen t)
 
-(set-frame-font "Monospace-10")
+(set-frame-font "Liberation Mono-10")
 
 (require 'package)
 (add-to-list 'package-archives

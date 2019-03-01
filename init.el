@@ -218,6 +218,9 @@ vi style of % jumping to matching brace."
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 (add-hook 'bazel-mode-hook (lambda () (add-hook 'before-save-hook #'bazel-format nil t)))
 
+;; Bison mode
+(require 'bison-mode)
+
 ;; Emacs which-key mode on
 (which-key-mode)
 

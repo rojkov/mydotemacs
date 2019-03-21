@@ -112,15 +112,29 @@ vi style of % jumping to matching brace."
 (global-set-key (kbd "C-w k")    'windmove-up)
 (global-set-key (kbd "C-w j")  'windmove-down)
 
-;; CUA mode
-(cua-mode t)
-(setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
-(transient-mark-mode 1) ;; No region when it is not highlighted
-(setq cua-keep-region-after-copy nil)
-;; Don't reset region highlighting after indent-rigidly
-(defadvice indent-rigidly (after deactivate-mark-nil activate)
-  (if (called-interactively-p 'any)
-      (setq deactivate-mark nil)))
+;; Evil mode
+(require 'evil)
+(evil-mode 1)
+;; Unbind SPC and RET from Evil mode.
+(defun my-move-key (keymap-from keymap-to key)
+     "Move key binding from one keymap to another, deleting from the old location."
+     (define-key keymap-to key (lookup-key keymap-from key))
+     (define-key keymap-from key nil))
+(my-move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
+(my-move-key evil-motion-state-map evil-normal-state-map " ")
+;; change mode-line color by evil state
+(require 'cl)
+(lexical-let ((default-color (cons (face-background 'mode-line)
+                                   (face-foreground 'mode-line))))
+  (add-hook 'post-command-hook
+    (lambda ()
+      (let ((color (cond ((minibufferp) default-color)
+                         ((evil-insert-state-p) '("#e80000" . "#ffffff"))
+                         ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
+                         ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
+                         (t default-color))))
+        (set-face-background 'mode-line (car color))
+        (set-face-foreground 'mode-line (cdr color))))))
 
 ;; undo-tree -> C-x u
 (require 'undo-tree)

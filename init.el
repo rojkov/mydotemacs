@@ -136,6 +136,9 @@ vi style of % jumping to matching brace."
         (set-face-background 'mode-line (car color))
         (set-face-foreground 'mode-line (cdr color))))))
 
+;; Winner mode
+(winner-mode 1)
+
 ;; undo-tree -> C-x u
 (require 'undo-tree)
 (global-undo-tree-mode)

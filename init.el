@@ -249,5 +249,36 @@ vi style of % jumping to matching brace."
 (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
       (add-hook hook (lambda () (flyspell-mode -1))))
 
+;; LSP mode
+(require 'lsp-mode)
+(use-package lsp-mode
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  :init (setq lsp-keymap-prefix "s-l")
+  :hook (
+         (c++-mode . lsp)
+         (lsp-mod . lsp-enable-which-key-integration))
+  :commands lsp)
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+(use-package use-package-ensure-system-package
+  :ensure t)
+
+(use-package ccls
+  :after projectile
+  :ensure-system-package ccls
+  :custom
+  (ccls-args nil)
+  (ccls-executable (executable-find "ccls"))
+  (projectile-project-root-files-top-down-recurring
+   (append '("compile_commands.json" ".ccls")
+           projectile-project-root-files-top-down-recurring))
+  :config (push ".ccls-cache" projectile-globally-ignored-directories))
+
+(use-package google-c-style
+  :hook ((c-mode c++-mode) . google-set-c-style)
+         (c-mode-common . google-make-newline-indent))
+
+
 ;; TODO
 ;; 1. diff-hl

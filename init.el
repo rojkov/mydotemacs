@@ -250,10 +250,11 @@ vi style of % jumping to matching brace."
       (add-hook hook (lambda () (flyspell-mode -1))))
 
 ;; LSP mode
-(require 'lsp-mode)
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 (use-package lsp-mode
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  :init (setq lsp-keymap-prefix "s-l")
+  ;; set prefix for lsp-command-keymap (default is "s-l", few alternatives - "C-l", "C-c l")
+  :init (setq lsp-keymap-prefix "C-c l")
   :hook (
          (c++-mode . lsp)
          (lsp-mod . lsp-enable-which-key-integration))

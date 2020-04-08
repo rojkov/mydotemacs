@@ -27,7 +27,9 @@
 
 ;; Set up color themes
 ;; make the fringe stand out from the background
-(setq solarized-distinct-fringe-background t)
+(if (display-graphic-p)
+  (setq solarized-distinct-fringe-background t)
+  (setq linum-format "%d "))
 ;; make the modeline high contrast
 (setq solarized-high-contrast-mode-line t)
 (setq my-color-themes (list 'solarized-dark

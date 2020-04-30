@@ -30,6 +30,9 @@
 (if (display-graphic-p)
   (setq solarized-distinct-fringe-background t)
   (setq linum-format "%d "))
+;; TODO: disable the next line for console mode
+(scroll-bar-mode -1)
+
 ;; make the modeline high contrast
 (setq solarized-high-contrast-mode-line t)
 (setq my-color-themes (list 'solarized-dark
@@ -183,8 +186,6 @@ vi style of % jumping to matching brace."
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
-
-(scroll-bar-mode -1)
 
 ;; Bitbake
 (require 'bb-mode)
